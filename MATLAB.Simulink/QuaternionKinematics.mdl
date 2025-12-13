@@ -1,5 +1,5 @@
 Model {
-  Name			  "QuaternionKinematics2021a"
+  Name			  "QuaternionKinematics"
   Version		  10.3
   SavedCharacterEncoding  "windows-1252"
   ModelUUID		  "3524a702-90a7-4774-b33d-ea76e433b692"
@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.3"
+    ComputedModelVersion    "1.4"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -22,13 +22,13 @@ Model {
     NumExternalFileReferences 2
     ExternalFileReference {
       Reference		      "aerosimlib/Transformations/Euler Angles\nFrom Quaternions"
-      Path		      "QuaternionKinematics2021a/Euler Angles From Quaternions"
+      Path		      "QuaternionKinematics/Euler Angles From Quaternions"
       SID		      "27"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "aerosimlib/Transformations/Euler Angles\nFrom Quaternions"
-      Path		      "QuaternionKinematics2021a/Euler Angles From Quaternions1"
+      Path		      "QuaternionKinematics/Euler Angles From Quaternions1"
       SID		      "30"
       Type		      "LIBRARY_BLOCK"
     }
@@ -100,9 +100,9 @@ Model {
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1807.0, 754.0]
-	  ZoomFactor		  [1.0275979557069848]
-	  Offset		  [431.74130876218089, -93.135318374381541]
-	  SceneRectInView	  [431.74130876218089, -93.135318374381541, 1406.7758620689654, 587.0]
+	  ZoomFactor		  [1.25]
+	  Offset		  [402.73603408511826, 86.703023986671326]
+	  SceneRectInView	  [402.73603408511826, 86.703023986671326, 1156.48, 482.56]
 	}
 	Object {
 	  $ObjectID		  7
@@ -197,9 +197,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "PC"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Oct 10 09:22:02 2025"
-  RTWModifiedTimeStamp	  681988909
-  ModelVersionFormat	  "%<AutoIncrement:1.3>"
+  LastModifiedDate	  "Fri Dec 12 23:11:44 2025"
+  RTWModifiedTimeStamp	  687480233
+  ModelVersionFormat	  "%<AutoIncrement:1.4>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
@@ -259,12 +259,12 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    12
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "QuaternionKinematics2021a"
-    overrideMode_	    [0U]
+    model_		    "QuaternionKinematics"
+    overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "QuaternionKinematics2021a"
+      Cell		      "QuaternionKinematics"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -1408,7 +1408,7 @@ Model {
     }
   }
   System {
-    Name		    "QuaternionKinematics2021a"
+    Name		    "QuaternionKinematics"
     Location		    [-7, -7, 1543, 831]
     SystemRect		    [0.000000, 0.000000, 0.000000, 0.000000]
     Open		    on
@@ -1425,9 +1425,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "103"
+    ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "43"
+    SIDHighWatermark	    "44"
     SimulinkSubDomain	    "Simulink"
     Block {
       BlockType		      Sum
@@ -1624,6 +1624,17 @@ Model {
       Ports		      [1]
       Position		      [1285, 377, 1370, 463]
       ZOrder		      273
+      Decimation	      "1"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Display1"
+      SID		      "44"
+      Ports		      [1]
+      Position		      [500, 425, 795, 505]
+      ZOrder		      284
+      BlockMirror	      on
+      NameLocation	      "top"
       Decimation	      "1"
     }
     Block {
@@ -1992,8 +2003,18 @@ Model {
       ZOrder		      3
       SrcBlock		      "Create Omega"
       SrcPort		      1
-      DstBlock		      "Matrix Multiply"
-      DstPort		      1
+      Points		      [19, 0]
+      Branch {
+	ZOrder			109
+	Points			[0, 190]
+	DstBlock		"Display1"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			108
+	DstBlock		"Matrix Multiply"
+	DstPort			1
+      }
     }
     Line {
       ZOrder		      4
@@ -2266,7 +2287,7 @@ Model {
 Stateflow {
   machine {
     id			    1
-    name		    "QuaternionKinematics2021a"
+    name		    "QuaternionKinematics"
     sfVersion		    80000041
     firstTarget		    9
   }
